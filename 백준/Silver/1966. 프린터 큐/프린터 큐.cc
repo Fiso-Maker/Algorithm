@@ -1,34 +1,55 @@
 #include <iostream>
 #include <queue>
+
 using namespace std;
-int main() {
-    int count=0;
-    int test_case;
-    cin >> test_case;
-    int n, m,ipt;//문서의 개수, 궁금한 문서 위치, 중요도
-    for (int i = 0; i < test_case; ++i) {
-        count = 0;
-        cin >> n >> m;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int case_count;
+    int cnt = 0;
+    int importance;
+
+    cin >> case_count;
+
+    int N, M;
+    for (int i = 0; i < case_count; i++)
+    {
+        cnt = 0;
         queue<pair<int, int>> q;
-        priority_queue<int> pq; // 우선순위 큐
-        for (int j = 0; j < n; ++j) {
-            cin >> ipt;
-            q.push({ j, ipt });
-            pq.push(ipt);
+        priority_queue<int> pq;
+
+        cin >> N >> M;
+        for (int j = 0; j < N; j++)
+        {
+            cin >> importance;
+            q.push({j, importance});
+            pq.push(importance);
         }
-        while (!q.empty()) {
+        while (!q.empty())
+        {
             int index = q.front().first;
             int value = q.front().second;
+
             q.pop();
-            if (pq.top() == value) {
+
+            if (pq.top() == value)
+            {
                 pq.pop();
-                ++count;
-                if (index == m) {
-                    cout << count << endl;
+                cnt++;
+                if (M == index)
+                {
+                    cout << cnt << endl;
                     break;
                 }
             }
-            else q.push({ index,value });
+            else
+            {
+                q.push({index, value});
+            }
         }
     }
 }
