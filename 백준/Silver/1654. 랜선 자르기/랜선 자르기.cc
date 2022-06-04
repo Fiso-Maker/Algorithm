@@ -8,7 +8,7 @@ int main()
     long long st = 1, en = 0, mid;
     cin >> K >> N;
 
-    for (long long i = 0; i < K; i++)
+    for (int i = 0; i < K; i++)
     {
         cin >> line[i];
         if (en < line[i])
@@ -19,7 +19,7 @@ int main()
     {
         cnt = 0;
         mid = (st + en) / 2;
-        for (long long i = 0; i < K; i++)
+        for (int i = 0; i < K; i++)
         {
             cnt += line[i] / mid;
         }
